@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lagomcurfew.R;
 import com.google.zxing.BarcodeFormat;
@@ -33,7 +35,10 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     private ImageView iTimeSlotTicket;
     private MainActivity mMainActivity;
 
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +54,6 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         btnShowQRCode.setOnClickListener(this);
         btnChangeBooking.setActivated(true);
         btnChangeBooking.setOnClickListener(this);
-        btnBookTimeSlot.setActivated(true);
         btnBookTimeSlot.setOnClickListener(this);
 
         return retView;
@@ -60,15 +64,10 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         mMainActivity = (MainActivity) getActivity();
     }
 
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
     @Override
     public void onClick(View v) {
 
-
-        switch (retView.getId()){
+        switch (v.getId()){
             case R.id.btn_show_qr_code: {
                 //do something
             }
