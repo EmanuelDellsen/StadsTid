@@ -34,10 +34,13 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     private ImageButton btnChangeBooking;
     private ImageView iTimeSlotTicket;
     private MainActivity mMainActivity;
+    private boolean qrIsActive;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //get qr status
+        qrIsActive = getQrStatus();
     }
     @Nullable
     @Override
@@ -69,7 +72,15 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()){
             case R.id.btn_show_qr_code: {
-                //do something
+
+                //check if qr is active, inflate next fragment depending on status
+                if(qrIsActive){
+                    ActiveQrCodeFragment activeQrCodeFragment = new ActiveQrCodeFragment();
+                    mMainActivity.doFragmentTransaction(activeQrCodeFragment,true);
+                } else {
+                    InactiveQrCodeFragment inactiveQrCodeFragment = new InactiveQrCodeFragment();
+                    mMainActivity.doFragmentTransaction(inactiveQrCodeFragment,true);
+                }
             }
             case R.id.btn_change_booking: {
                 //do something
@@ -83,6 +94,11 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
                 break;
             }
         }
+    }
+
+    public boolean getQrStatus(){
+        // do something to get the qr status
+        return true;
     }
 }
  /*QRCodeWriter writer = new QRCodeWriter();
