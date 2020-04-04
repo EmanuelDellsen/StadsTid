@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //get qr status
+        //get qr status from shared preference
         qrIsActive = getQrStatus();
     }
     @Nullable
@@ -81,9 +82,13 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
                     InactiveQrCodeFragment inactiveQrCodeFragment = new InactiveQrCodeFragment();
                     mMainActivity.doFragmentTransaction(inactiveQrCodeFragment,true);
                 }
+
+                break;
             }
             case R.id.btn_change_booking: {
                 //do something
+
+                break;
             }
 
             case R.id.btn_book_time_slot: {
@@ -98,23 +103,6 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
 
     public boolean getQrStatus(){
         // do something to get the qr status
-        return true;
+        return false;
     }
 }
- /*QRCodeWriter writer = new QRCodeWriter();
-        try {
-            BitMatrix bitMatrix = writer.encode("QR CODE", BarcodeFormat.QR_CODE, 512, 512);
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
-                }
-            }
-            ((ImageView) retView.findViewById(R.id.QR_code)).setImageBitmap(bmp);
-
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
-        */
