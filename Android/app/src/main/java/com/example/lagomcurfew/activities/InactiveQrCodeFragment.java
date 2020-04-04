@@ -30,6 +30,15 @@ public class InactiveQrCodeFragment extends Fragment {
     private TextView txtPassNonActive;
     private ImageView iBottomLogo;
     private MainActivity mMainActivity;
+    private TimeSlot mTimeSlot;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mMainActivity = (MainActivity) getActivity();
+
+        //get shared timeslot
+        mTimeSlot = mMainActivity.getSharedTimeslot();
+    }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +54,10 @@ public class InactiveQrCodeFragment extends Fragment {
 
         //Call to generate qr-code including findViewById.
         setQRCode();
-        txtCountDownTimer = retView.findViewById(R.id.count_down_to_next_pass);
         txtPassNonActive = retView.findViewById(R.id.pass_non_active);
+        txtCountDownTimer = retView.findViewById(R.id.count_down_to_next_pass);
 
         return retView;
-    }
-
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mMainActivity = (MainActivity) getActivity();
     }
 
     public void setQRCode(){

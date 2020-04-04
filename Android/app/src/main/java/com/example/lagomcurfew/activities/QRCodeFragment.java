@@ -1,10 +1,12 @@
 package com.example.lagomcurfew.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,12 +38,15 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     private ImageView iTimeSlotTicket;
     private MainActivity mMainActivity;
     private boolean qrIsActive;
+    private TimeSlot mTimeSlot;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mMainActivity = (MainActivity) getActivity();
+    }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //get qr status from shared preference
-        qrIsActive = getQrStatus();
     }
     @Nullable
     @Override
@@ -61,11 +66,6 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         btnBookTimeSlot.setOnClickListener(this);
 
         return retView;
-    }
-
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mMainActivity = (MainActivity) getActivity();
     }
 
     @Override
