@@ -38,7 +38,7 @@
         android:layout_width="314dp"
         android:layout_height="67dp"
         android:src="@drawable/login_with_bank_id_text"
-        android:backgroundTint="#FEFEFE"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
         android:id="@+id/imageView"
         android:layout_width="132dp"
         android:layout_height="99dp"
-        android:background="#FEFEFE"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/btn_bankid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,21 +70,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@drawable/login_scanqr_btn" />
-
-    <TextView
-        android:id="@+id/qr_scanner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/QR_scanner"
-        android:textColor="#3748c1"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.056" />
 
     <TextView
         android:id="@+id/watch_instruction_video"
@@ -112,4 +97,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/government_logo"
         app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,8 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.376"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:background="@drawable/round_corners"/>
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <TextView
         android:id="@+id/pass_non_active"
@@ -36,13 +35,13 @@
 
     <TextView
         android:id="@+id/next_booking"
-        android:layout_width="215dp"
+        android:layout_width="230dp"
         android:layout_height="85dp"
         android:layout_marginBottom="196dp"
+        android:background="@drawable/background_gray_rounded_corners"
         android:gravity="center"
         android:text="@string/next_booking"
         android:textSize="20sp"
-        android:background="@drawable/background_gray_rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

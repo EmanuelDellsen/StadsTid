@@ -23,6 +23,7 @@
     <string name="login_with_bank_id">Log in bank-id</string>
     <string name="how_app_works">This is how it works</string>
     <string name="watch_instructions_video">Watch instruction video</string>
+    <string name="booking_info_text">No active booking</string>
 
 
 </resources>

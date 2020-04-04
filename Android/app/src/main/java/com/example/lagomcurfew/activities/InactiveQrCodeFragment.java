@@ -68,12 +68,9 @@ public class InactiveQrCodeFragment extends Fragment {
     }
 
     public void setNextBooking(){
-        //get swedish locale
-        Locale swedishLocale = new Locale("sv", "SE");
-        Locale.setDefault(swedishLocale);
 
         //format booking into preferred format
-        SimpleDateFormat df = new SimpleDateFormat("EEE dd-MMMM-yyyy HH:mm", Locale.getDefault());
+        SimpleDateFormat df = new SimpleDateFormat("EEE dd-MMMM-yyyy HH:mm");
         String formattedDate = df.format(mBooking);
 
         //change text that is displayed
