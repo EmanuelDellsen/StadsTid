@@ -57,8 +57,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         retView = inflater.inflate(R.layout.fragment_qr_code, container, false);
 
-        //indicate that we've logged in
-        Toast.makeText(mMainActivity,"Successfully logged in!",Toast.LENGTH_SHORT).show();
+
 
         iTopLogo = retView.findViewById(R.id.top_logo);
         iGovernmentLogo = retView.findViewById(R.id.government_logo);

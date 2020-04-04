@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import java.time.Duration;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -119,7 +117,7 @@ public class ActiveQrCodeFragment extends Fragment {
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(remain)));
 
         //change text
-        txtCountDownTimer.setText("Tid kvar:\n" + str);
+        txtCountDownTimer.setText("Time left:\n" + str);
     }
 
     public Date addHoursToDate(Date date, int hours) {
