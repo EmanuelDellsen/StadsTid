@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageButton
+        android:id="@+id/btn_book_time_slot"
+        android:layout_width="128dp"
+        android:layout_height="119dp"
+        android:src="@drawable/start_booktimebutton"
+        android:text="@string/book_time_slot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.773" />
+
+    <ImageButton
+        android:id="@+id/btn_change_booking"
+        android:layout_width="132dp"
+        android:layout_height="121dp"
+        android:src="@drawable/start_editbutton"
+        android:text="@string/change_bookings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777" />
+
+    <ImageView
+        android:id="@+id/ticket_logo"
+        android:layout_width="236dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="221dp"
+        android:src="@drawable/start_ticket"
+        android:text="@string/upcoming_time_slot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.91" />
+
+    <ImageView
+        android:id="@+id/government_logo"
+        android:layout_width="249dp"
+        android:layout_height="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168"
+        app:srcCompat="@drawable/start_fhmlogo" />
+
+    <ImageView
+        android:id="@+id/top_logo"
+        android:layout_width="183dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toTopOf="@+id/government_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.285"
+        app:srcCompat="@drawable/start_toplogo" />
+
+    <Button
+        android:id="@+id/btn_show_qr_code"
+        android:layout_width="176dp"
+        android:layout_height="38dp"
+        android:text="@string/show_qr_code"
+        app:layout_constraintBottom_toTopOf="@+id/ticket_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/government_logo"
+        app:layout_constraintVertical_bias="0.175" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
