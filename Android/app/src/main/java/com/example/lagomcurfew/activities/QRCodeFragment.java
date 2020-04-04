@@ -56,6 +56,10 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         retView = inflater.inflate(R.layout.fragment_qr_code, container, false);
+
+        //indicate that we've logged in
+        Toast.makeText(mMainActivity,"Successfully logged in!",Toast.LENGTH_SHORT).show();
+
         iTopLogo = retView.findViewById(R.id.top_logo);
         iGovernmentLogo = retView.findViewById(R.id.government_logo);
         btnShowQRCode = retView.findViewById(R.id.btn_show_qr_code);
@@ -69,6 +73,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         btnChangeBooking.setOnClickListener(this);
         btnBookTimeSlot.setOnClickListener(this);
 
+
         return retView;
     }
 
@@ -78,8 +83,8 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.btn_show_qr_code: {
 
-                //check if there is booking
-                if(mBooking != null){
+                //check booking is active
+                if(mMainActivity.isBookingActive()){
                     ActiveQrCodeFragment activeQrCodeFragment = new ActiveQrCodeFragment();
                     mMainActivity.doFragmentTransaction(activeQrCodeFragment,true);
                 } else {

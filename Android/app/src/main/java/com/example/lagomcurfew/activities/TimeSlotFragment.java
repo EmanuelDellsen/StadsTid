@@ -7,14 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.lagomcurfew.R;
-
 import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -30,6 +27,13 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     private View retView;
     private Context mContext;
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mInterfaceMainActivity = (InterfaceMainActivity) getActivity();
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,19 +44,11 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
         return retView;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mInterfaceMainActivity = (InterfaceMainActivity) getActivity();
-
-    }
 
     @Override
     public void onClick(View v) {
 
     }
-
-
 
     private void initViewPager() {
         timeSlotAdapter = new TimeSlotAdapter( timeSlots, this, mInterfaceMainActivity.getContext());
@@ -166,12 +162,12 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
         return "";
     }
 
-    public static Date getDate(int year, int month, int day) {
+    public Date getDate(int year, int month, int day, String hour) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, day);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
@@ -181,10 +177,11 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     public void onItemSelected(int position, int indexOfBtn) {
         TimeSlot testTimeSlot=timeSlots.get(position);
 
-
         //Toast.makeText(mInterfaceMainActivity.getContext(), "->" + testTimeSlot.getDate() + testTimeSlot.getFormattedDate(), Toast.LENGTH_SHORT).show();
-        Date date = getDate(Integer.parseInt(testTimeSlot.getYear()), Integer.parseInt(testTimeSlot.getMonth()) - 1, Integer.parseInt(testTimeSlot.getDate()));
+        Date date = getDate(Integer.parseInt(testTimeSlot.getYear()), Integer.parseInt(testTimeSlot.getMonth()) - 1, Integer.parseInt(testTimeSlot.getDate()),Long.toString((testTimeSlot.getSlots().get(indexOfBtn).getStartTime()) / 100));
 
+        //Set shared preference
+        mInterfaceMainActivity.saveSharedBooking(date);
 
         //date.setTime(testTimeSlot.getSlots().get(indexOfBtn).getStartTime());
         Toast.makeText(mInterfaceMainActivity.getContext(),"->" + date.toString(),Toast.LENGTH_LONG).show();

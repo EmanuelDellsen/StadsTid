@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.lagomcurfew.R;
 import com.google.gson.Gson;
@@ -14,8 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements InterfaceMainActivity {
 
@@ -32,18 +33,23 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
         mPreferences = getPreferences(MODE_PRIVATE);
 
         init();
-
     }
 
     private void init() {
-
-
         QRCodeFragment qrCodeFragment = new QRCodeFragment();
         doFragmentTransaction(qrCodeFragment, true);
     }
 
     public void doFragmentTransaction(Fragment fragment, boolean addToBackStack) {
+        //get current booking
+        Date mBooking = getSharedBooking();
 
+        //check if there is a booking
+        if(mBooking != null){
+            //will reset shared preferences if booking has expired
+            resetSharedPreferences();
+
+        }
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.frameLayout, fragment);
 
         if (addToBackStack) {
@@ -80,10 +86,55 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
     }
 
     public Date getSharedBooking(){
+        Date mDate = null;
         Gson gson = new Gson();
         String json = mPreferences.getString("myBooking", "");
-        Date mDate = gson.fromJson(json, Date.class);
+        mDate = gson.fromJson(json, Date.class);
         return mDate;
+    }
+
+    public boolean isBookingActive(){
+        //get current date & time
+        Date current = Calendar.getInstance().getTime();
+
+        //get current booking
+        Date mBooking = getSharedBooking();
+
+        //check if there is a booking
+        if(mBooking != null){
+            return current.after(mBooking) && current.before(addHoursToDate(mBooking,3));
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isBookingExpired(){
+        //get current date & time
+        Date current = Calendar.getInstance().getTime();
+
+        //get current booking
+        Date mBooking = getSharedBooking();
+
+        //check if current time is after end time of booking
+        if(current.after(addHoursToDate(mBooking,3))){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void resetSharedPreferences(){
+        //reset sharedPreferences if booking is expired
+        if(isBookingExpired()){
+            mPreferences.edit().clear().commit();
+        }
+    }
+
+    public Date addHoursToDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
     }
 
 }

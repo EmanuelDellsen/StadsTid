@@ -62,12 +62,16 @@ public class ActiveQrCodeFragment extends Fragment {
 
         //if there is a booking, start the countdown
         if(mBooking != null){
+            //set mBooking to end time (3 hours later) only time
+            mBooking = addHoursToDate(mBooking,3);
+
             //first set the remaining time to change the text upon creation of fragment
             setRemainingTime();
 
-            //start the countdown
+            //start the countdown which calls setRemainingTime every 1 second
             startCountdown();
         }
+
         return retView;
     }
 
@@ -116,6 +120,13 @@ public class ActiveQrCodeFragment extends Fragment {
 
         //change text
         txtCountDownTimer.setText("Tid kvar:\n" + str);
+    }
+
+    public Date addHoursToDate(Date date, int hours) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
     }
 
     private long getDiffInMilliSeconds(Date date1, Date date2)
