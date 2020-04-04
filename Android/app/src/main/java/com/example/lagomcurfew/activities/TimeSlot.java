@@ -9,7 +9,6 @@ public class TimeSlot {
     private String year;
     private String day;
     private String formattedDate;
-
     private Date dateObj;
 
     public String getDate() {

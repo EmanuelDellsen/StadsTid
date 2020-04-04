@@ -30,7 +30,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          retView = inflater.inflate(R.layout.fragment_start, container, false);
-        getDates();
+         getDates();
          initViewPager();
 
         return retView;
@@ -116,29 +116,29 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     private String getMonth(int index) {
         switch (index) {
             case Calendar.JANUARY:
-                return "JANUARY";
+                return "1";
             case Calendar.FEBRUARY:
-                return "FEBRUARY";
+                return "2";
             case Calendar.MARCH:
-                return "MARCH";
+                return "3";
             case Calendar.APRIL:
-                return "APRIL";
+                return "4";
             case Calendar.MAY:
-                return "MAY";
+                return "5";
             case Calendar.JUNE:
-                return "JUNE";
+                return "6";
             case Calendar.JULY:
-                return "JULY";
+                return "7";
             case Calendar.AUGUST:
-                return "AUGUST";
+                return "8";
             case Calendar.SEPTEMBER:
-                return "SEPTEMBER";
+                return "9";
             case Calendar.OCTOBER:
-                return "OCTOBER";
+                return "10";
             case Calendar.NOVEMBER:
-                return "NOVEMBER";
+                return "11";
             case Calendar.DECEMBER:
-                return "DECEMBER";
+                return "12";
         }
         return "";
     }

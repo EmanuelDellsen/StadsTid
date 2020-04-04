@@ -3,9 +3,13 @@ package com.example.lagomcurfew.activities;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,17 +18,19 @@ import com.example.lagomcurfew.R;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class TimeSlotAdapter extends PagerAdapter {
 
-    private Context mContext;
-    private TimeSlotFragment fTimeSlotFragment;
     private ArrayList<TimeSlot> timeSlot;
-    //private LayoutInflater inflater;
     private int currentItemPos;
     private LayoutInflater mLayoutInflater;
+    private Button btnFirstSlot;
+    private Button btnSecondSlot;
+    private Button btnThirdSlot;
+    private Button btnLastSlot;
 
         public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener) {
             this.onItemSelectedListener = onItemSelectedListener;
@@ -39,47 +45,39 @@ public class TimeSlotAdapter extends PagerAdapter {
 
         @NonNull
         @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, final int position) {
             ViewHolder holder;
 
             mLayoutInflater = LayoutInflater.from(container.getContext());
 
             TimeSlot date = this.timeSlot.get(position);
 
-            View convertView = mLayoutInflater.inflate(R.layout.time_slot_item, container, false);
-            holder = new ViewHolder();
+            View convertView =  mLayoutInflater.inflate(R.layout.time_slot_item, container, false);
+           holder = new ViewHolder();
 
             holder.dateTextView =  convertView
-                    .findViewById(R.id.layout_time_slot_text);
+                    .findViewById(R.id.time_slot_text);
             holder.dayTextview = convertView
-                    .findViewById(R.id.layout_time_slot_day);
+                   .findViewById(R.id.time_slot_day);
             holder.monthTextView =  convertView
-                    .findViewById(R.id.layout_time_slot_month);
+                    .findViewById(R.id.time_slot_month);
 
-            //holder.outerLayout = convertView
-            //        .findViewById(R.id.layout_date_item_outer_layout);
 
             convertView.setTag(Integer.valueOf(position));
 
-            holder.dateTextView.setText(date.getDate());
+            holder.dateTextView.setText(date.getDate() + "/" + date.getMonth());
             holder.dayTextview.setText(date.getDay());
-            holder.monthTextView.setText(date.getMonth());
+            //holder.monthTextView.setText(date.getMonth());
 
             convertView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-                    fTimeSlotFragment.onPagerItemClick(v,
-                            (Integer) v.getTag());
+                    onItemSelectedListener.onItemSelected(position);
                 }
             });
 
-            if (position == currentItemPos) {
-                holder.outerLayout.setBackgroundColor(Color.parseColor("#EC522C"));
-            } else {
-                holder.outerLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            }
 
             container.addView(convertView);
 
@@ -92,6 +90,8 @@ public class TimeSlotAdapter extends PagerAdapter {
             private TextView dateTextView;
 
             private LinearLayout outerLayout;
+
+
         }
 
         @Override
