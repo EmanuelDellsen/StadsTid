@@ -79,7 +79,6 @@ public class TimeSlotAdapter extends PagerAdapter {
 
                 @Override
                 public void onClick(View v) {
-                    btnFirstSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
                     onItemSelectedListener.onItemSelected(position, 0);
 
 
@@ -89,7 +88,6 @@ public class TimeSlotAdapter extends PagerAdapter {
 
                 @Override
                 public void onClick(View v) {
-                    btnSecondSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
 
                     onItemSelectedListener.onItemSelected(position, 1);
 
@@ -99,8 +97,6 @@ public class TimeSlotAdapter extends PagerAdapter {
 
                 @Override
                 public void onClick(View v) {
-                    btnThirdSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
-                    clickedBtn=2;
                     onItemSelectedListener.onItemSelected(position,2);
 
                 }
@@ -109,8 +105,7 @@ public class TimeSlotAdapter extends PagerAdapter {
 
                 @Override
                 public void onClick(View v) {
-                    btnFourthSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
-                    clickedBtn=3;
+
                     onItemSelectedListener.onItemSelected(position,3);
 
                 }
@@ -119,8 +114,7 @@ public class TimeSlotAdapter extends PagerAdapter {
 
                 @Override
                 public void onClick(View v) {
-                    btnLastSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
-                    clickedBtn=4;
+
                     onItemSelectedListener.onItemSelected(position,4);
 
 
