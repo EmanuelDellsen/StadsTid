@@ -43,6 +43,8 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     public void onAttach(Context context) {
         super.onAttach(context);
         mMainActivity = (MainActivity) getActivity();
+
+        qrIsActive = getQrStatus();
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,6 +105,6 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
 
     public boolean getQrStatus(){
         // do something to get the qr status
-        return false;
+        return true;
     }
 }

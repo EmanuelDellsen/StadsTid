@@ -8,7 +8,7 @@
     <string name="upcoming_time_slot">Ditt nästa pass:</string>
     <string name="show_qr_code">Visa QR-kod</string>
     <string name="pass_activated">Du har ett aktiverat pass!</string>
-    <string name="count_down_timer">Tid kvar:</string>
+    <string name="count_down_timer">Något är fel.</string>
     <string name="pass_non_activate">Du har inget aktivt pass!</string>
     <string name="next_booking">Det finns inget framtida pass inbokat!</string>
     <string name="intent_message"></string>

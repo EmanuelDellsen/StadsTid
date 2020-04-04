@@ -1,5 +1,6 @@
 package com.example.lagomcurfew.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,17 +11,19 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import com.example.lagomcurfew.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import java.time.Duration;
+import java.util.Date;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class ActiveQrCodeFragment extends Fragment {
 
@@ -30,6 +33,15 @@ public class ActiveQrCodeFragment extends Fragment {
     private TextView txtPassActivated;
     private ImageView iBottomLogo;
     private MainActivity mMainActivity;
+    private Date mBooking;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mMainActivity = (MainActivity) getActivity();
+
+        //get booking from shared preferences
+        mBooking = mMainActivity.getSharedBooking();
+    }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,15 +60,75 @@ public class ActiveQrCodeFragment extends Fragment {
         txtCountDownTimer = retView.findViewById(R.id.count_down_timer);
         txtPassActivated = retView.findViewById(R.id.pass_activated);
 
+        ///FOR TESTING ONLY
+        mBooking = new Date(System.currentTimeMillis() + 3600 * 1500);
+        /// FOR TESTING ONLY
+
+        //if there is a booking, start the countdown
+        if(mBooking != null){
+            //first set the remaining time to change the text upon creation of fragment
+            setRemainingTime();
+
+            //start the countdown
+            startCountdown();
+        }
         return retView;
     }
 
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mMainActivity = (MainActivity) getActivity();
+    private void startCountdown(){
+
+        //https://www.youtube.com/watch?v=6sBqeoioCHE
+        Thread t=new Thread(){
+            int count = 0;
+            @Override
+            public void run(){
+
+                while(!isInterrupted()){
+                    try {
+                        Thread.sleep(1000);  //1000ms = 1 sec
+                        mMainActivity.runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                setRemainingTime();
+                            }
+                        });
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        t.start();
     }
 
-    public void setQRCode(){
+    private void setRemainingTime(){
+        //get current date and time
+        Date current = Calendar.getInstance().getTime();
+
+        //get remaining time
+        long remain = getDiffInMilliSeconds(current, mBooking);
+
+        //display as hours and minutes
+        @SuppressLint("DefaultLocale") String str = String.format("%02d:%02d:%02d",
+                TimeUnit.MILLISECONDS.toHours(remain),
+                TimeUnit.MILLISECONDS.toMinutes(remain) -
+                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(remain)), // The change is in this line
+                TimeUnit.MILLISECONDS.toSeconds(remain) -
+                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(remain)));
+
+        //change text
+        txtCountDownTimer.setText("Tid kvar:\n" + str);
+    }
+
+    private long getDiffInMilliSeconds(Date date1, Date date2)
+    {
+        long diff = date2.getTime() - date1.getTime();
+        return diff;
+    }
+
+    private void setQRCode(){
 
         QRCodeWriter writer = new QRCodeWriter();
         try {
@@ -74,9 +146,5 @@ public class ActiveQrCodeFragment extends Fragment {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }
