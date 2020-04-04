@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -37,8 +38,8 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
         retView = inflater.inflate(R.layout.fragment_intro, container, false);
 
         btnBankId = retView.findViewById(R.id.btn_bankid);
-        btnBankId.setOnClickListener(this);
         btnBankId.setActivated(true);
+        btnBankId.setOnClickListener(this);
 
         return retView;
     }

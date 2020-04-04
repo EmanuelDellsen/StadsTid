@@ -51,7 +51,7 @@ public class ActiveQrCodeFragment extends Fragment {
         retView = inflater.inflate(R.layout.fragment_active_qr_code, container, false);
 
         //Change background color to green (active qr code)
-        retView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.backgroundActive));
+        retView.setBackgroundColor(ContextCompat.getColor(mMainActivity.getContext(), R.color.backgroundActive));
 
         //Call to generate qr-code including findViewById.
         setQRCode();

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.lagomcurfew.R;
 import java.net.Inet4Address;
@@ -26,11 +27,13 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     private ArrayList<TimeSlot> timeSlots;
     private View retView;
     private Context mContext;
+    private ImageButton btnAcceptTimeslot;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mInterfaceMainActivity = (InterfaceMainActivity) getActivity();
+        mMainActivity = (MainActivity) getActivity();
 
     }
 
@@ -38,8 +41,12 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          retView = inflater.inflate(R.layout.fragment_time_slot, container, false);
+
          getDates();
          initViewPager();
+         btnAcceptTimeslot = retView.findViewById(R.id.accept_booking_btn);
+         btnAcceptTimeslot.setActivated(true);
+         btnAcceptTimeslot.setOnClickListener(this);
 
         return retView;
     }
@@ -48,6 +55,13 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
 
+        switch(v.getId()){
+            case R.id.accept_booking_btn:{
+                mMainActivity.getSupportFragmentManager().beginTransaction().remove(TimeSlotFragment.this).commit();
+                mMainActivity.getSupportFragmentManager().popBackStack();
+
+            }
+        }
     }
 
     private void initViewPager() {
