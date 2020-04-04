@@ -3,31 +3,43 @@ package com.example.lagomcurfew.activities;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lagomcurfew.R;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class TimeSlotAdapter extends PagerAdapter {
 
-    private Context mContext;
-    private TimeSlotFragment fTimeSlotFragment;
     private ArrayList<TimeSlot> timeSlot;
-    //private LayoutInflater inflater;
     private int currentItemPos;
+    private LayoutInflater mLayoutInflater;
+    private Button btnFirstSlot;
+    private Button btnSecondSlot;
+    private Button btnThirdSlot;
+    private Button btnFourthSlot;
+    private Button btnLastSlot;
+    private Context context;
+    private Integer clickedBtn;
 
-        public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener) {
+        public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener, Context context) {
             this.onItemSelectedListener = onItemSelectedListener;
             this.timeSlot = timeSlots;
+            this.context = context;
         }
 
         private onItemSelectedListener onItemSelectedListener;
@@ -38,60 +50,111 @@ public class TimeSlotAdapter extends PagerAdapter {
 
         @NonNull
         @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, final int position) {
             ViewHolder holder;
 
-            //inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
+            mLayoutInflater = LayoutInflater.from(container.getContext());
 
             TimeSlot date = this.timeSlot.get(position);
 
-            View convertView = LayoutInflater.from(container.getContext()).inflate(R.layout.time_slot_item,
-                     container, false);
-            holder = new ViewHolder();
+
+            View convertView =  mLayoutInflater.inflate(R.layout.time_slot_item, container, false);
+           holder = new ViewHolder();
 
             holder.dateTextView =  convertView
-                    .findViewById(R.id.layout_time_slot_text);
+                    .findViewById(R.id.time_slot_text);
             holder.dayTextview = convertView
-                    .findViewById(R.id.layout_time_slot_day);
+                   .findViewById(R.id.time_slot_day);
             holder.monthTextView =  convertView
-                    .findViewById(R.id.layout_time_slot_month);
-
-            //holder.outerLayout = convertView
-            //        .findViewById(R.id.layout_date_item_outer_layout);
-
+                    .findViewById(R.id.time_slot_month);
             convertView.setTag(Integer.valueOf(position));
-
-            holder.dateTextView.setText(date.getDate());
+            holder.dateTextView.setText(date.getDate() + "/" + date.getMonth());
             holder.dayTextview.setText(date.getDay());
-            holder.monthTextView.setText(date.getMonth());
+            //holder.monthTextView.setText(date.getMonth());
 
-            convertView.setOnClickListener(new View.OnClickListener() {
+            btnFirstSlot = convertView.findViewById(R.id.btn_first_slot);
+            btnSecondSlot = convertView.findViewById(R.id.btn_second_slot);
+            btnThirdSlot = convertView.findViewById(R.id.btn_third_slot);
+            btnFourthSlot = convertView.findViewById(R.id.btn_fourth_slot);
+            btnLastSlot = convertView.findViewById(R.id.btn_last_slot);
+
+
+            btnFirstSlot.setActivated(true);
+            btnSecondSlot.setActivated(true);
+            btnThirdSlot.setActivated(true);
+            btnFourthSlot.setActivated(true);
+            btnLastSlot.setActivated(true);
+
+            btnFirstSlot.setOnClickListener(new View.OnClickListener(){
 
                 @Override
                 public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    fTimeSlotFragment.onPagerItemClick(v,
-                            (Integer) v.getTag());
+                    btnFirstSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
+                    onItemSelectedListener.onItemSelected(position, 0);
+
+
+                }
+            });
+            btnSecondSlot.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    btnSecondSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
+
+                    onItemSelectedListener.onItemSelected(position, 1);
+                   // Toast.makeText(mLayoutInflater.getContext(), " test -> " + clickedBtn, Toast.LENGTH_LONG).show();
+
+                }
+            });
+            btnThirdSlot.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    btnThirdSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
+                    clickedBtn=2;
+                    onItemSelectedListener.onItemSelected(position,2);
+
+                }
+            });
+            btnFourthSlot.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    btnFourthSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
+                    clickedBtn=3;
+                    onItemSelectedListener.onItemSelected(position,3);
+
+                }
+            });
+            btnLastSlot.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    btnLastSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
+                    clickedBtn=4;
+                    onItemSelectedListener.onItemSelected(position,4);
+
+
                 }
             });
 
-            if (position == currentItemPos) {
-                holder.outerLayout.setBackgroundColor(Color.parseColor("#EC522C"));
-            } else {
-                holder.outerLayout.setBackgroundColor(Color.parseColor("#ffffff"));
-            }
 
             container.addView(convertView);
 
             return convertView;
         }
 
-        private class ViewHolder  {
+
+
+    private class ViewHolder {
             private TextView monthTextView;
             private TextView dayTextview;
             private TextView dateTextView;
 
             private LinearLayout outerLayout;
+
+
+
         }
 
         @Override
@@ -122,7 +185,7 @@ public class TimeSlotAdapter extends PagerAdapter {
 
     public interface onItemSelectedListener {
 
-        void onItemSelected(int position);
+        void onItemSelected(int position, int indexOfBtn);
     }
-    }
+}
 

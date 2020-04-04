@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
 
     private void init() {
 
-        //TimeSlotFragment timeSlotFragment = new TimeSlotFragment();
-        //doFragmentTransaction(timeSlotFragment, true);
+
         QRCodeFragment qrCodeFragment = new QRCodeFragment();
         doFragmentTransaction(qrCodeFragment, true);
     }
