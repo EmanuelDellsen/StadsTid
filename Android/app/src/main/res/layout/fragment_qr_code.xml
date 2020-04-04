@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_grey_white">
@@ -13,35 +12,16 @@
         android:layout_width="155dp"
         android:layout_height="151dp"
         android:layout_margin="5dp"
-        android:background="#FDFDFD"
-        android:backgroundTint="#FBFBFB"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/book_start_time"
         android:scaleType="fitCenter"
-        android:src="@drawable/book_time_btn_eng"
+        android:src="@drawable/start_booktimebuttoneng"
         android:text="@string/book_time_slot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766" />
-
-    <ImageButton
-        android:id="@+id/btn_change_booking"
-        android:layout_width="159dp"
-        android:layout_height="150dp"
-        android:layout_margin="5dp"
-        android:backgroundTint="#FFFFFF"
-        android:scaleType="fitXY"
-        android:src="@drawable/edit_btn_eng"
-        android:text="@string/change_bookings"
-        android:contentDescription="@string/edit_bookings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintVertical_bias="0.763" />
 
     <ImageView
         android:id="@+id/ticket_logo"
@@ -87,7 +67,7 @@
         android:id="@+id/btn_show_qr_code"
         android:layout_width="375dp"
         android:layout_height="91dp"
-        android:backgroundTint="#FFFFFF"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/show_qr_btn_eng"
         android:text="@string/show_qr_code"
@@ -97,6 +77,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/government_logo"
         app:layout_constraintVertical_bias="0.175" />
+
+    <TextView
+        android:id="@+id/booking_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/booking_info_text"
+        android:textSize="10dp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/ticket_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_book_time_slot"
+        app:layout_constraintVertical_bias="0.597" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

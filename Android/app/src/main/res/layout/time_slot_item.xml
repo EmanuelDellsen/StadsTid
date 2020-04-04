@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_first_slot"
-            android:background="@drawable/avaliable_time_slot"
+            android:background="@drawable/available_time_slot"
             android:layout_margin="5dp"
             />
         <Button
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_second_slot"
-            android:background="@drawable/avaliable_time_slot"
+            android:background="@drawable/available_time_slot"
             android:layout_margin="5dp"
             />
         <Button
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_third_slot"
-            android:background="@drawable/avaliable_time_slot"
+            android:background="@drawable/available_time_slot"
             android:layout_margin="5dp"
             />
         <Button
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_fourth_slot"
-            android:background="@drawable/avaliable_time_slot"
+            android:background="@drawable/available_time_slot"
             android:layout_margin="5dp"
             />
         <Button
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_last_slot"
-            android:background="@drawable/avaliable_time_slot"
+            android:background="@drawable/available_time_slot"
             android:layout_margin="5dp"
             />
 
