@@ -30,8 +30,9 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          retView = inflater.inflate(R.layout.fragment_start, container, false);
+        getDates();
          initViewPager();
-         getDates();
+
         return retView;
     }
 

@@ -24,6 +24,7 @@ public class TimeSlotAdapter extends PagerAdapter {
     private ArrayList<TimeSlot> timeSlot;
     //private LayoutInflater inflater;
     private int currentItemPos;
+    private LayoutInflater mLayoutInflater;
 
         public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener) {
             this.onItemSelectedListener = onItemSelectedListener;
@@ -41,12 +42,11 @@ public class TimeSlotAdapter extends PagerAdapter {
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             ViewHolder holder;
 
-            //inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
+            mLayoutInflater = LayoutInflater.from(container.getContext());
 
             TimeSlot date = this.timeSlot.get(position);
 
-            View convertView = LayoutInflater.from(container.getContext()).inflate(R.layout.time_slot_item,
-                     container, false);
+            View convertView = mLayoutInflater.inflate(R.layout.time_slot_item, container, false);
             holder = new ViewHolder();
 
             holder.dateTextView =  convertView
