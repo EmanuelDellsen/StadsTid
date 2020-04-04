@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.sql.Date;
 import java.sql.Time;
 
 public class MainActivity extends AppCompatActivity implements InterfaceMainActivity {
@@ -71,23 +72,19 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
         return this;
     }
 
-    public void saveSharedTimeslot() {
-        TimeSlot mTimeSlot = new TimeSlot();
-        //set variables of timeslot (should be passed)
-
+    public void saveSharedBooking(Date mDate) {
         SharedPreferences.Editor prefsEditor = mPreferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(mTimeSlot);
-        prefsEditor.putString("myTimeSlot",json);
+        String json = gson.toJson(mDate);
+        prefsEditor.putString("myBooking",json);
         prefsEditor.commit();
-
     }
 
-    public TimeSlot getSharedTimeslot(){
+    public Date getSharedBooking(){
         Gson gson = new Gson();
-        String json = mPreferences.getString("myTimeSlot", "");
-        TimeSlot mTimeSlot = gson.fromJson(json, TimeSlot.class);
-        return mTimeSlot;
+        String json = mPreferences.getString("myBooking", "");
+        Date mDate = gson.fromJson(json, Date.class);
+        return mDate;
     }
 
 }
