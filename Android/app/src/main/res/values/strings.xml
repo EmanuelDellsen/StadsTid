@@ -19,6 +19,10 @@
     <string name="btn_fourth_slot">18:00</string>
     <string name="btn_last_slot">21:00</string>
     <string name="next_booking">You have no upcoming booking!</string>
-    <string name="intent_message"></string>
+    <string name="QR_scanner">QR scanner</string>
+    <string name="login_with_bank_id">Log in bank-id</string>
+    <string name="how_app_works">This is how it works</string>
+    <string name="watch_instructions_video">Watch instruction video</string>
+
 
 </resources>

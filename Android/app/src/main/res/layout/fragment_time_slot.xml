@@ -39,6 +39,7 @@
         android:id="@+id/accept_booking_btn"
         android:layout_width="236dp"
         android:layout_height="62dp"
+        android:backgroundTint="#FFFFFF"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.lagomcurfew.R;
@@ -25,9 +26,11 @@ public class IntroFragment extends Fragment implements View.OnClickListener {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        retView = inflater.inflate(R.layout.fragment_time_slot, container, false);
+        retView = inflater.inflate(R.layout.fragment_intro, container, false);
 
         btnBankId = retView.findViewById(R.id.btn_bankid);
+        btnBankId.setActivated(true);
+        btnBankId.setOnClickListener(this);
 
         return retView;
     }
