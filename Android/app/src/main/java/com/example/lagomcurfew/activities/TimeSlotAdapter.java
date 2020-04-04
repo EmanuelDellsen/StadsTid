@@ -1,29 +1,16 @@
 package com.example.lagomcurfew.activities;
 
-
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.lagomcurfew.R;
-
 import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 public class TimeSlotAdapter extends PagerAdapter {
 
@@ -38,7 +25,6 @@ public class TimeSlotAdapter extends PagerAdapter {
     private Context context;
     private Integer clickedBtn;
     private int indexForBackground = 0;
-
 
     public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener, Context context) {
             this.onItemSelectedListener = onItemSelectedListener;
@@ -64,7 +50,6 @@ public class TimeSlotAdapter extends PagerAdapter {
 
             View convertView =  mLayoutInflater.inflate(R.layout.time_slot_item, container, false);
 
-            Toast.makeText(mLayoutInflater.getContext(), " test -> " + indexForBackground, Toast.LENGTH_LONG).show();
            holder = new ViewHolder();
 
             holder.dateTextView =  convertView
@@ -107,7 +92,6 @@ public class TimeSlotAdapter extends PagerAdapter {
                     btnSecondSlot.setBackgroundColor(v.getResources().getColor(R.color.timeslotButtonClicked));
 
                     onItemSelectedListener.onItemSelected(position, 1);
-                   // Toast.makeText(mLayoutInflater.getContext(), " test -> " + clickedBtn, Toast.LENGTH_LONG).show();
 
                 }
             });
