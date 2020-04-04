@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/inactive_bg_red">
 
-
     <ImageView
         android:id="@+id/qr_code"
         android:layout_width="183dp"
@@ -50,12 +49,12 @@
         android:id="@+id/bottom_logo"
         android:layout_width="165dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="68dp"
+        android:contentDescription="@string/stadstid_logo_black_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/count_down_to_next_pass"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928"
         app:srcCompat="@drawable/start_toplogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
