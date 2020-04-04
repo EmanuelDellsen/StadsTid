@@ -9,29 +9,31 @@
 
     <ImageButton
         android:id="@+id/btn_book_time_slot"
-        android:layout_width="181dp"
+        android:layout_width="155dp"
         android:layout_height="151dp"
+        android:layout_margin="5dp"
         android:src="@drawable/book_time_btn_eng"
         android:text="@string/book_time_slot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
+        app:layout_constraintVertical_bias="0.766" />
 
     <ImageButton
         android:id="@+id/btn_change_booking"
-        android:layout_width="181dp"
-        android:layout_height="151dp"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_margin="5dp"
         android:src="@drawable/edit_btn_eng"
         android:text="@string/change_bookings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintVertical_bias="0.765" />
 
     <ImageView
         android:id="@+id/ticket_logo"

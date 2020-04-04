@@ -1,6 +1,8 @@
 package com.example.lagomcurfew.activities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TimeSlot {
 
@@ -8,8 +10,9 @@ public class TimeSlot {
     private String month;
     private String year;
     private String day;
-    private String formattedDate;
+    private Integer formattedDate;
     private Date dateObj;
+    private List<OneSlot> slots = new ArrayList<>();
 
     public String getDate() {
         return date;
@@ -43,11 +46,11 @@ public class TimeSlot {
         this.day = day;
     }
 
-    public String getFormattedDate() {
+    public Integer getFormattedDate() {
         return formattedDate;
     }
 
-    public void setFormattedDate(String formattedDate) {
+    public void setFormattedDate(Integer formattedDate) {
         this.formattedDate = formattedDate;
     }
 
@@ -57,5 +60,15 @@ public class TimeSlot {
 
     public void setDateObj(Date dateObj) {
         this.dateObj = dateObj;
+    }
+
+    public List<OneSlot> getSlots() {
+
+        return slots;
+    }
+
+    public void addSlot(OneSlot slot) {
+
+        slots.add(slot);
     }
 }

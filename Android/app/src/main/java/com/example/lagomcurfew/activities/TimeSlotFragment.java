@@ -1,12 +1,16 @@
 package com.example.lagomcurfew.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.lagomcurfew.R;
+
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,7 +33,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         retView = inflater.inflate(R.layout.fragment_start, container, false);
+         retView = inflater.inflate(R.layout.fragment_time_slot, container, false);
          getDates();
          initViewPager();
 
@@ -51,7 +55,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
 
 
     private void initViewPager() {
-        timeSlotAdapter = new TimeSlotAdapter( timeSlots, this);
+        timeSlotAdapter = new TimeSlotAdapter( timeSlots, this, mInterfaceMainActivity.getContext());
         timeSlotAdapter.setCurrentItem(0);
 
 
@@ -81,9 +85,28 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
             date.setYear("" + calendar.get(Calendar.YEAR));
             date.setMonth("" + getMonth(calendar.get(Calendar.MONTH)));
 
-            date.setFormattedDate(calendar.get(Calendar.YEAR) + "-"
-                    + (calendar.get(Calendar.MONTH) + 1) + "-"
-                    + calendar.get(Calendar.DATE));
+            date.setFormattedDate(calendar.get(Calendar.DATE));
+
+            OneSlot slot1 = new OneSlot();
+            slot1.setStartTime(Long.valueOf("0900"));
+            slot1.setDate(date.getDate());
+            OneSlot slot2 = new OneSlot();
+            slot2.setStartTime(Long.valueOf("1200"));
+            slot2.setDate(date.getDate());
+            OneSlot slot3 = new OneSlot();
+            slot3.setStartTime(Long.valueOf("1500"));
+            slot3.setDate(date.getDate());
+            OneSlot slot4 = new OneSlot();
+            slot4.setStartTime(Long.valueOf("1800"));
+            slot4.setDate(date.getDate());
+            OneSlot slot5 = new OneSlot();
+            slot5.setStartTime(Long.valueOf("2100"));
+            slot5.setDate(date.getDate());
+            date.addSlot(slot1);
+            date.addSlot(slot2);
+            date.addSlot(slot3);
+            date.addSlot(slot4);
+            date.addSlot(slot5);
 
             timeSlots.add(date);
 
@@ -143,8 +166,28 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
         return "";
     }
 
+    public static Date getDate(int year, int month, int day) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.DAY_OF_MONTH, day);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
+    }
     @Override
-    public void onItemSelected(int position) {
+    public void onItemSelected(int position, int indexOfBtn) {
+        TimeSlot testTimeSlot=timeSlots.get(position);
+
+
+        //Toast.makeText(mInterfaceMainActivity.getContext(), "->" + testTimeSlot.getDate() + testTimeSlot.getFormattedDate(), Toast.LENGTH_SHORT).show();
+        Date date = getDate(Integer.parseInt(testTimeSlot.getYear()), Integer.parseInt(testTimeSlot.getMonth()) - 1, Integer.parseInt(testTimeSlot.getDate()));
+
+        
+        //date.setTime(testTimeSlot.getSlots().get(indexOfBtn).getStartTime());
+        Toast.makeText(mInterfaceMainActivity.getContext(),"->" + date.toString(),Toast.LENGTH_LONG).show();
 
     }
 }

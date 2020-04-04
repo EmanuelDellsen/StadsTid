@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="backgroundNonActive">#7d0101</color>
     <color name="backgroundActive">#8faa4e</color>
+    <color name="timeslotButtonClicked">#517fff</color>
+
 </resources>
