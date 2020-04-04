@@ -15,23 +15,22 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class TimeSlotAdapter extends PagerAdapter {
 
     private Context mContext;
     private TimeSlotFragment fTimeSlotFragment;
     private ArrayList<TimeSlot> timeSlot;
-    private LayoutInflater inflater;
+    //private LayoutInflater inflater;
     private int currentItemPos;
 
-        public TimeSlotAdapter(Context context, TimeSlotFragment timeSlotFragment, int resourceId,
-                               ArrayList<TimeSlot> objects) {
-            this.mContext = context;
-            this.fTimeSlotFragment = timeSlotFragment;
-            this.timeSlot = objects;
-
-
+        public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener) {
+            this.onItemSelectedListener = onItemSelectedListener;
+            this.timeSlot = timeSlots;
         }
+
+        private onItemSelectedListener onItemSelectedListener;
 
         public void setCurrentItem(int item) {
             this.currentItemPos = item;
@@ -42,11 +41,11 @@ public class TimeSlotAdapter extends PagerAdapter {
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             ViewHolder holder;
 
-            inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
+            //inflater = (LayoutInflater) mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
 
             TimeSlot date = this.timeSlot.get(position);
 
-            View convertView = inflater.inflate(R.layout.time_slot_item,
+            View convertView = LayoutInflater.from(container.getContext()).inflate(R.layout.time_slot_item,
                      container, false);
             holder = new ViewHolder();
 
@@ -87,7 +86,7 @@ public class TimeSlotAdapter extends PagerAdapter {
             return convertView;
         }
 
-        private class ViewHolder {
+        private class ViewHolder  {
             private TextView monthTextView;
             private TextView dayTextview;
             private TextView dateTextView;
@@ -120,5 +119,10 @@ public class TimeSlotAdapter extends PagerAdapter {
         public float getPageWidth(int position) {
             return 0.2f;
         }
+
+    public interface onItemSelectedListener {
+
+        void onItemSelected(int position);
+    }
     }
 

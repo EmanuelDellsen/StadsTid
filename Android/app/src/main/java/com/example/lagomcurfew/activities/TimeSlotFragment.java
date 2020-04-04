@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-public class TimeSlotFragment extends Fragment implements View.OnClickListener {
+public class TimeSlotFragment extends Fragment implements View.OnClickListener, TimeSlotAdapter.onItemSelectedListener {
 
     private InterfaceMainActivity mInterfaceMainActivity;
     private ViewPager viewPager;
@@ -31,6 +31,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          retView = inflater.inflate(R.layout.fragment_start, container, false);
          initViewPager();
+         getDates();
         return retView;
     }
 
@@ -49,8 +50,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener {
 
 
     private void initViewPager() {
-        timeSlotAdapter = new TimeSlotAdapter(mInterfaceMainActivity.getContext(), this, R.layout.time_slot_item,
-                getDates());
+        timeSlotAdapter = new TimeSlotAdapter( timeSlots, this);
         timeSlotAdapter.setCurrentItem(0);
 
 
@@ -140,5 +140,10 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener {
                 return "DECEMBER";
         }
         return "";
+    }
+
+    @Override
+    public void onItemSelected(int position) {
+
     }
 }

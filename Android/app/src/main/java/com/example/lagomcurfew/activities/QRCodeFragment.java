@@ -29,7 +29,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     private View retView;
     private ImageView iTopLogo;
     private ImageView iGovernmentLogo;
-    private Button btnShowQRCode;
+    private ImageButton btnShowQRCode;
     private ImageButton btnBookTimeSlot;
     private ImageButton btnChangeBooking;
     private ImageView iTimeSlotTicket;
@@ -87,6 +87,7 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
             }
 
             case R.id.btn_book_time_slot: {
+
                 //switch to time slot fragment to show available time slots
                 TimeSlotFragment timeSlotFragment = new TimeSlotFragment();
                 mMainActivity.doFragmentTransaction(timeSlotFragment, true);
