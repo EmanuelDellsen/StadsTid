@@ -3,9 +3,9 @@ package com.example.lagomcurfew.activities;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
 import com.example.lagomcurfew.R;
 import com.google.gson.Gson;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
 
         //Shared preferences (https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object)
         mPreferences = getPreferences(MODE_PRIVATE);
+
+        //will reset shared preferences if booking has expired
+        resetSharedPreferences();
 
         init();
     }
@@ -84,10 +87,9 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
     }
 
     public Date getSharedBooking(){
-        Date mDate = null;
         Gson gson = new Gson();
         String json = mPreferences.getString("myBooking", "");
-        mDate = gson.fromJson(json, Date.class);
+        Date mDate = gson.fromJson(json, Date.class);
         return mDate;
     }
 
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
 
     public void resetSharedPreferences(){
         //reset sharedPreferences if booking is expired
+
         if(isBookingExpired()){
             mPreferences.edit().clear().commit();
         }

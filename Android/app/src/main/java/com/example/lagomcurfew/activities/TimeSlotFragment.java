@@ -2,6 +2,7 @@ package com.example.lagomcurfew.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     private View retView;
     private Context mContext;
     private ImageButton btnAcceptTimeslot;
+    private int indexForBackground = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -65,11 +67,12 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     }
 
     private void initViewPager() {
-        timeSlotAdapter = new TimeSlotAdapter( timeSlots, this, mInterfaceMainActivity.getContext());
+        timeSlotAdapter = new TimeSlotAdapter( timeSlots, this, mMainActivity.getContext());
         timeSlotAdapter.setCurrentItem(0);
 
 
         viewPager =  retView.findViewById(R.id.viewPager);
+
         viewPager.setAdapter(timeSlotAdapter);
 
         // set intial position.

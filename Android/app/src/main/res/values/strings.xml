@@ -24,6 +24,13 @@
     <string name="how_app_works">This is how it works</string>
     <string name="watch_instructions_video">Watch instruction video</string>
     <string name="booking_info_text">No active booking</string>
+    <string name="top_logo">stadstid_logo</string>
+    <string name="government_logo">Government_logo</string>
+    <string name="video_icon">video_icon</string>
+    <string name="edit_bookings">edit_booking_icon</string>
+    <string name="ticket_with_upcoming_booking">ticket_logo_upcoming_booking</string>
+    <string name="green_calendar_icon_">green_calendar_icon</string>
+    <string name="stadstid_logo_black_text">stadstid_logo_black_text</string>
 
 
 </resources>

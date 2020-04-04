@@ -3,6 +3,7 @@ package com.example.lagomcurfew.activities;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -35,8 +37,10 @@ public class TimeSlotAdapter extends PagerAdapter {
     private Button btnLastSlot;
     private Context context;
     private Integer clickedBtn;
+    private int indexForBackground = 0;
 
-        public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener, Context context) {
+
+    public TimeSlotAdapter(ArrayList<TimeSlot> timeSlots, onItemSelectedListener onItemSelectedListener, Context context) {
             this.onItemSelectedListener = onItemSelectedListener;
             this.timeSlot = timeSlots;
             this.context = context;
@@ -59,14 +63,15 @@ public class TimeSlotAdapter extends PagerAdapter {
 
 
             View convertView =  mLayoutInflater.inflate(R.layout.time_slot_item, container, false);
+
+            Toast.makeText(mLayoutInflater.getContext(), " test -> " + indexForBackground, Toast.LENGTH_LONG).show();
            holder = new ViewHolder();
 
             holder.dateTextView =  convertView
                     .findViewById(R.id.time_slot_text);
             holder.dayTextview = convertView
                    .findViewById(R.id.time_slot_day);
-            holder.monthTextView =  convertView
-                    .findViewById(R.id.time_slot_month);
+
             convertView.setTag(Integer.valueOf(position));
             holder.dateTextView.setText(date.getDate() + "/" + date.getMonth());
             holder.dayTextview.setText(date.getDay());
@@ -189,3 +194,14 @@ public class TimeSlotAdapter extends PagerAdapter {
     }
 }
 
+/*
+for(;indexForBackground < 365; indexForBackground++){
+                if(indexForBackground%2 == 0){
+                    convertView.setBackgroundColor(ContextCompat.getColor(context,R.color.off_white));
+                    Log.i("TIME","inside white colour");
+                } else {
+                    Log.i("TIME","inside red colour");
+                    convertView.setBackgroundColor(ContextCompat.getColor(context,R.color.light_grey));
+                }
+            }
+ */
