@@ -77,7 +77,7 @@ public class InactiveQrCodeFragment extends Fragment {
         String formattedDate = df.format(mBooking);
 
         //change text that is displayed
-        txtNextBooking.setText("Nästa pass:\n"+formattedDate);
+        txtNextBooking.setText("Next booking:\n"+formattedDate);
     }
 
     public void setQRCode(){

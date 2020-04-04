@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
-
 import com.example.lagomcurfew.R;
 import com.google.gson.Gson;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
 
     private void init() {
         IntroFragment introFragment = new IntroFragment();
-        doFragmentTransaction(introFragment, true);
+        doFragmentTransaction(introFragment, false);
     }
 
     public void doFragmentTransaction(Fragment fragment, boolean addToBackStack) {
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
             resetSharedPreferences();
 
         }
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.frameLayout, fragment);
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment);
 
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(fragment.getTag());

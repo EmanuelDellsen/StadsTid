@@ -11,6 +11,7 @@
         android:layout_width="183dp"
         android:layout_height="166dp"
         android:contentDescription="@string/QR_code"
+        android:background="@drawable/rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="@string/pass_activated"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/qr_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +34,13 @@
 
     <TextView
         android:id="@+id/count_down_timer"
-        android:layout_width="104dp"
-        android:layout_height="58dp"
+        android:layout_width="215dp"
+        android:layout_height="85dp"
         android:layout_marginBottom="196dp"
+        android:background="@drawable/background_gray_rounded_corners"
+        android:gravity="center"
         android:text="@string/count_down_timer"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -54,6 +59,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/count_down_timer"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/start_toplogo" />
+        app:srcCompat="@drawable/active_bottomlogo_white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
