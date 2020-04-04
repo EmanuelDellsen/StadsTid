@@ -60,10 +60,6 @@ public class ActiveQrCodeFragment extends Fragment {
         txtCountDownTimer = retView.findViewById(R.id.count_down_timer);
         txtPassActivated = retView.findViewById(R.id.pass_activated);
 
-        ///FOR TESTING ONLY
-        mBooking = new Date(System.currentTimeMillis() + 3600 * 1500);
-        /// FOR TESTING ONLY
-
         //if there is a booking, start the countdown
         if(mBooking != null){
             //first set the remaining time to change the text upon creation of fragment
@@ -114,7 +110,7 @@ public class ActiveQrCodeFragment extends Fragment {
         @SuppressLint("DefaultLocale") String str = String.format("%02d:%02d:%02d",
                 TimeUnit.MILLISECONDS.toHours(remain),
                 TimeUnit.MILLISECONDS.toMinutes(remain) -
-                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(remain)), // The change is in this line
+                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(remain)),
                 TimeUnit.MILLISECONDS.toSeconds(remain) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(remain)));
 

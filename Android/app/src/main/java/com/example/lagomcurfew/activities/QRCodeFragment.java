@@ -27,6 +27,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Date;
+
 public class QRCodeFragment extends Fragment implements View.OnClickListener {
 
     private View retView;
@@ -37,14 +39,14 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
     private ImageButton btnChangeBooking;
     private ImageView iTimeSlotTicket;
     private MainActivity mMainActivity;
-    private boolean qrIsActive;
-    private TimeSlot mTimeSlot;
+    private Date mBooking;
 
     public void onAttach(Context context) {
         super.onAttach(context);
         mMainActivity = (MainActivity) getActivity();
 
-        qrIsActive = getQrStatus();
+        //Get shared booking, null if no booking has been made
+        mBooking = mMainActivity.getSharedBooking();
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,15 +78,14 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.btn_show_qr_code: {
 
-                //check if qr is active, inflate next fragment depending on status
-                if(qrIsActive){
+                //check if there is booking
+                if(mBooking != null){
                     ActiveQrCodeFragment activeQrCodeFragment = new ActiveQrCodeFragment();
                     mMainActivity.doFragmentTransaction(activeQrCodeFragment,true);
                 } else {
                     InactiveQrCodeFragment inactiveQrCodeFragment = new InactiveQrCodeFragment();
                     mMainActivity.doFragmentTransaction(inactiveQrCodeFragment,true);
                 }
-
                 break;
             }
             case R.id.btn_change_booking: {
@@ -101,10 +102,5 @@ public class QRCodeFragment extends Fragment implements View.OnClickListener {
                 break;
             }
         }
-    }
-
-    public boolean getQrStatus(){
-        // do something to get the qr status
-        return true;
     }
 }
