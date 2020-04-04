@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
     private void init() {
 
 
-        QRCodeFragment qrCodeFragment = new QRCodeFragment();
-        doFragmentTransaction(qrCodeFragment, true);
+        IntroFragment introFragment = new IntroFragment();
+        doFragmentTransaction(introFragment, true);
     }
 
     public void doFragmentTransaction(Fragment fragment, boolean addToBackStack) {

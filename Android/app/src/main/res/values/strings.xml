@@ -1,22 +1,24 @@
 <resources>
     <string name="app_name">StadsTid</string>
-    <string name="avail_slots">Tillängliga luckor</string>
+    <string name="avail_slots">Available times</string>
     <string name="QR_code">QR Code</string>
-    <string name="settings">settings</string>
-    <string name="book_time_slot">Boka</string>
-    <string name="change_bookings">Ändra</string>
-    <string name="upcoming_time_slot">Ditt nästa pass:</string>
-    <string name="show_qr_code">Visa QR-kod</string>
-    <string name="pass_activated">Du har ett aktiverat pass!</string>
-    <string name="count_down_timer">Något är fel.</string>
-    <string name="pass_non_activate">Du har inget aktivt pass!</string>
-    <string name="count_down_to_next_pass">Nästa pass:</string>
+    <string name="settings">Settings</string>
+    <string name="book_time_slot">Book</string>
+    <string name="change_bookings">Change</string>
+    <string name="book_start_time">Book your start time</string>
+    <string name="booking_info">All slots are three hours</string>
+    <string name="upcoming_time_slot">Your next booking:</string>
+    <string name="show_qr_code">Show QR-code</string>
+    <string name="pass_activated">You have an active booking!</string>
+    <string name="count_down_timer">Something is wrong.</string>
+    <string name="pass_non_activate">You have no active booking!</string>
+    <string name="count_down_to_next_pass">Next booking:</string>
     <string name="btn_first_slot">09:00</string>
     <string name="btn_second_slot">12:00</string>
     <string name="btn_third_slot">15:00</string>
     <string name="btn_fourth_slot">18:00</string>
     <string name="btn_last_slot">21:00</string>
-    <string name="next_booking">Det finns inget framtida pass inbokat!</string>
+    <string name="next_booking">You have no upcoming booking!</string>
     <string name="intent_message"></string>
 
 </resources>

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FEFEFE">
 
 
     <ImageButton
@@ -12,6 +13,7 @@
         android:layout_width="155dp"
         android:layout_height="151dp"
         android:layout_margin="5dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/book_time_btn_eng"
         android:text="@string/book_time_slot"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,9 +25,10 @@
 
     <ImageButton
         android:id="@+id/btn_change_booking"
-        android:layout_width="155dp"
-        android:layout_height="155dp"
+        android:layout_width="159dp"
+        android:layout_height="150dp"
         android:layout_margin="5dp"
+        android:scaleType="fitXY"
         android:src="@drawable/edit_btn_eng"
         android:text="@string/change_bookings"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,6 +78,7 @@
         android:id="@+id/btn_show_qr_code"
         android:layout_width="375dp"
         android:layout_height="91dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/show_qr_btn_eng"
         android:text="@string/show_qr_code"
         app:layout_constraintBottom_toTopOf="@+id/ticket_logo"
