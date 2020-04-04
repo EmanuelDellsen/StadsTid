@@ -7,29 +7,40 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import com.example.lagomcurfew.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class InactiveQrCodeFragment extends Fragment {
 
     private View retView;
     private ImageView iQRCode;
-    private TextView txtCountDownTimer;
+    private TextView txtNextBooking;
     private TextView txtPassNonActive;
     private ImageView iBottomLogo;
     private MainActivity mMainActivity;
+    private Date mBooking;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mMainActivity = (MainActivity) getActivity();
+
+        //get booking from shared preferences
+        mBooking = mMainActivity.getSharedBooking();
+    }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +56,28 @@ public class InactiveQrCodeFragment extends Fragment {
 
         //Call to generate qr-code including findViewById.
         setQRCode();
-        txtCountDownTimer = retView.findViewById(R.id.count_down_to_next_pass);
         txtPassNonActive = retView.findViewById(R.id.pass_non_active);
+        txtNextBooking = retView.findViewById(R.id.next_booking);
+
+        //if there is a booking, display the date and time
+        if(mBooking != null){
+            setNextBooking();
+        }
 
         return retView;
     }
 
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mMainActivity = (MainActivity) getActivity();
+    public void setNextBooking(){
+        //get swedish locale
+        Locale swedishLocale = new Locale("sv", "SE");
+        Locale.setDefault(swedishLocale);
+
+        //format booking into preferred format
+        SimpleDateFormat df = new SimpleDateFormat("EEE dd-MMMM-yyyy HH:mm", Locale.getDefault());
+        String formattedDate = df.format(mBooking);
+
+        //change text that is displayed
+        txtNextBooking.setText("Nästa pass:\n"+formattedDate);
     }
 
     public void setQRCode(){
@@ -74,10 +98,6 @@ public class InactiveQrCodeFragment extends Fragment {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }
 

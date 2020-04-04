@@ -185,7 +185,7 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
         //Toast.makeText(mInterfaceMainActivity.getContext(), "->" + testTimeSlot.getDate() + testTimeSlot.getFormattedDate(), Toast.LENGTH_SHORT).show();
         Date date = getDate(Integer.parseInt(testTimeSlot.getYear()), Integer.parseInt(testTimeSlot.getMonth()) - 1, Integer.parseInt(testTimeSlot.getDate()));
 
-        
+
         //date.setTime(testTimeSlot.getSlots().get(indexOfBtn).getStartTime());
         Toast.makeText(mInterfaceMainActivity.getContext(),"->" + date.toString(),Toast.LENGTH_LONG).show();
 
