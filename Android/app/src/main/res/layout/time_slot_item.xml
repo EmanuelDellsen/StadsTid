@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#FEFEFE">
+    android:background="@color/light_grey">
 
 
         <TextView
@@ -20,12 +20,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/cardview_dark_background"
             android:layout_margin="5dp"/>
-        <TextView
-            android:id="@+id/time_slot_month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/cardview_dark_background"
-            android:layout_margin="5dp"/>
+
         <Button
             android:id="@+id/btn_first_slot"
             android:layout_width="wrap_content"
