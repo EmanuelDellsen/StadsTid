@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity implements InterfaceMainActi
         //Shared preferences (https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object)
         mPreferences = getPreferences(MODE_PRIVATE);
 
-        //will reset shared preferences if booking has expired
-        resetSharedPreferences();
-
         init();
     }
 
