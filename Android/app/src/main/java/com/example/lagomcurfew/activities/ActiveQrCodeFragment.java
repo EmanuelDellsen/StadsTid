@@ -26,7 +26,6 @@ import java.util.concurrent.TimeUnit;
 public class ActiveQrCodeFragment extends Fragment {
 
     private View retView;
-    private ImageView iQRCode;
     private TextView txtCountDownTimer;
     private TextView txtPassActivated;
     private ImageView iBottomLogo;

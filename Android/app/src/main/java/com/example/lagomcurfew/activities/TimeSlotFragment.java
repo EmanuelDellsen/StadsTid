@@ -1,8 +1,6 @@
 package com.example.lagomcurfew.activities;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,8 +43,9 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
          getDates();
          initViewPager();
          btnAcceptTimeslot = retView.findViewById(R.id.accept_booking_btn);
-         btnAcceptTimeslot.setActivated(true);
-         btnAcceptTimeslot.setOnClickListener(this);
+
+         //set btn acceptTimeslot to non-active upon inflation
+         btnAcceptTimeslot.setActivated(false);
 
         return retView;
     }
@@ -190,6 +189,11 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     }
     @Override
     public void onItemSelected(int position, int indexOfBtn) {
+
+        //activate accept button after selection of item
+        btnAcceptTimeslot.setActivated(true);
+        btnAcceptTimeslot.setOnClickListener(this);
+
         TimeSlot testTimeSlot=timeSlots.get(position);
 
         Date date = getDate(Integer.parseInt(testTimeSlot.getYear()), Integer.parseInt(testTimeSlot.getMonth()) - 1, Integer.parseInt(testTimeSlot.getDate()),Long.toString((testTimeSlot.getSlots().get(indexOfBtn).getStartTime()) / 100));

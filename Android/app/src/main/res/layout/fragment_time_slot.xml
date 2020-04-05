@@ -40,7 +40,6 @@
         android:id="@+id/accept_booking_btn"
         android:layout_width="236dp"
         android:layout_height="62dp"
-        android:backgroundTint="#FFFFFF"
         android:scaleType="centerCrop"
         android:contentDescription="@string/book_start_time"
         app:layout_constraintBottom_toBottomOf="parent"

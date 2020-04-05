@@ -6,7 +6,7 @@
     <string name="book_time_slot">Book</string>
     <string name="change_bookings">Change</string>
     <string name="book_start_time">Book your start time</string>
-    <string name="booking_info">All slots are three hours</string>
+    <string name="booking_info">All slots are three hours long</string>
     <string name="upcoming_time_slot">Your next booking:</string>
     <string name="show_qr_code">Show QR-code</string>
     <string name="pass_activated">You have an active booking!</string>

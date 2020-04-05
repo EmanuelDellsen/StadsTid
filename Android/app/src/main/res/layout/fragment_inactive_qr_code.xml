@@ -11,7 +11,7 @@
         android:layout_width="183dp"
         android:layout_height="166dp"
         android:contentDescription="@string/QR_code"
-        android:fadingEdge="horizontal|vertical"
+        android:background="@drawable/rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
