@@ -3,6 +3,7 @@ package com.example.lagomcurfew.activities;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class InactiveQrCodeFragment extends Fragment {
     private ImageView iBottomLogo;
     private MainActivity mMainActivity;
     private Date mBooking;
+    private MediaPlayer mediaPlayer;
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -63,6 +65,9 @@ public class InactiveQrCodeFragment extends Fragment {
         if(mBooking != null){
             setNextBooking();
         }
+
+         mediaPlayer = MediaPlayer.create(mMainActivity.getContext(), R.raw.skansgatan_3_disapproved_mp3);
+        mediaPlayer.start();
 
         return retView;
     }

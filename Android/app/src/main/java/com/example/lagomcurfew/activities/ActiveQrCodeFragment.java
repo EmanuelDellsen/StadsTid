@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ public class ActiveQrCodeFragment extends Fragment {
     private ImageView iBottomLogo;
     private MainActivity mMainActivity;
     private Date mBooking;
+    private MediaPlayer mediaPlayer;
 
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -69,6 +72,8 @@ public class ActiveQrCodeFragment extends Fragment {
             startCountdown();
         }
 
+        mediaPlayer = MediaPlayer.create(mMainActivity.getContext(), R.raw.skansgatan_2_approved_mp3);
+        mediaPlayer.start();
         return retView;
     }
 
