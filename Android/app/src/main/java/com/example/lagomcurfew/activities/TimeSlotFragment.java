@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import com.example.lagomcurfew.R;
-import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -194,14 +192,10 @@ public class TimeSlotFragment extends Fragment implements View.OnClickListener, 
     public void onItemSelected(int position, int indexOfBtn) {
         TimeSlot testTimeSlot=timeSlots.get(position);
 
-        //Toast.makeText(mInterfaceMainActivity.getContext(), "->" + testTimeSlot.getDate() + testTimeSlot.getFormattedDate(), Toast.LENGTH_SHORT).show();
         Date date = getDate(Integer.parseInt(testTimeSlot.getYear()), Integer.parseInt(testTimeSlot.getMonth()) - 1, Integer.parseInt(testTimeSlot.getDate()),Long.toString((testTimeSlot.getSlots().get(indexOfBtn).getStartTime()) / 100));
 
         //Set shared preference
         mInterfaceMainActivity.saveSharedBooking(date);
-
-        //date.setTime(testTimeSlot.getSlots().get(indexOfBtn).getStartTime());
-        Toast.makeText(mInterfaceMainActivity.getContext(),"->" + date.toString(),Toast.LENGTH_LONG).show();
 
     }
 }

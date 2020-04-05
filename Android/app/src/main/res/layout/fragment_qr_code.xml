@@ -44,10 +44,10 @@
         android:contentDescription="@string/government_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168"
+        app:layout_constraintVertical_bias="0.253"
         app:srcCompat="@drawable/start_fhmlogo" />
 
     <ImageView
@@ -58,9 +58,10 @@
         android:contentDescription="@string/top_logo"
         app:layout_constraintBottom_toTopOf="@+id/government_logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285"
+        app:layout_constraintVertical_bias="0.658"
         app:srcCompat="@drawable/start_toplogo" />
 
     <ImageButton
@@ -68,15 +69,16 @@
         android:layout_width="375dp"
         android:layout_height="91dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/show_qr_code"
         android:scaleType="fitCenter"
         android:src="@drawable/show_qr_btn_eng"
         android:text="@string/show_qr_code"
-        android:contentDescription="@string/show_qr_code"
         app:layout_constraintBottom_toTopOf="@+id/ticket_logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/government_logo"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <TextView
         android:id="@+id/booking_info"
