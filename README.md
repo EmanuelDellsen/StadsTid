@@ -8,7 +8,7 @@ An application made during the Hack the Crisis Sweden event 2020-04-03 - 2020-04
 
 Well it is based on the idea of providing all our fellow citizens certain timeslots to book in order to spend their time doing recreational activities. This idea was born from the fact that an increased unfairness between who practices safe distancing with a common sense and those who keep on increasing the risk of having COVID-19 spread. It is not only now that this is needed but also in the future when we need tackle the difficulties in decreasing the risk of having the virus spread again.  
 
-<img src="https://github.com/EmanuelDellsen/StadsTid/blob/master/Android/assets/images/start_screen.jpg" width="230" height="300"> <img src="https://github.com/EmanuelDellsen/StadsTid/blob/master/Android/assets/images/booking_screen.jpg" width="230" height="300">
+<img src="https://github.com/EmanuelDellsen/StadsTid/blob/master/Android/assets/images/start_screen.jpg" width="200" height="300"> <img src="https://github.com/EmanuelDellsen/StadsTid/blob/master/Android/assets/images/booking_screen.jpg" width="200" height="300">
 
 
 ## Getting Started
@@ -26,7 +26,9 @@ What things you need to install the software and how to install them:
 
 1. Clone repo
 2. Open Android Studio (APK 24+)
-3. 
+3. Import as existing project
+4. Build as gradle project
+5. Enjoy!
 
 ## Deployment
 
