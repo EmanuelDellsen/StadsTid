@@ -24,7 +24,7 @@
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="411dp"
+        android:layout_width="wrap_content"
         android:layout_height="335dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,8 +40,10 @@
         android:id="@+id/accept_booking_btn"
         android:layout_width="236dp"
         android:layout_height="62dp"
-        android:scaleType="centerCrop"
+        android:background="@drawable/round_corners"
         android:contentDescription="@string/book_start_time"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
